@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/App.css';
 
-const ItemList = () => {
+const ItemList = (props) => {
+	console.log(props.history);
+	const { history } = props;
 	const [list, setList] = useState([]);
 	const [isBottom, setIsBottom] = useState(false);
 	const [offset, setOffect] = useState(0);
@@ -50,6 +52,7 @@ const ItemList = () => {
 					collectionName: item.collection.name,
 					description: item.description,
 					permalink: item.permalink,
+					id: item.id,
 				}));
 				const temp = list.concat(result);
 				setList(temp);
@@ -61,7 +64,13 @@ const ItemList = () => {
 		<div className='App'>
 			<div className='container'>
 				{list.map((item, index) => (
-					<div className='list-item' key={`${item.name}_${index}`}>
+					<div
+						onClick={() => {
+							history.push({ pathname: '/item' });
+						}}
+						className='list-item'
+						key={`${item.name}_${index}`}
+					>
 						<img className='list-img' src={item.imageUrl} alt={'Item'} />
 						<div>{item.name}</div>
 					</div>
