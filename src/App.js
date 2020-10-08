@@ -4,8 +4,11 @@ import './App.css';
 
 function App() {
 	const [list, setList] = useState([]);
+	const [isBottom, setIsBottom] = useState(false);
 
 	useEffect(() => {
+		window.addEventListener('scroll', handleScroll);
+
 		fetch('https://api.opensea.io/api/v1/assets?owner=0x960DE9907A2e2f5363646d48D7FB675Cd2892e91&offset=0&limit=20')
 			.then((response) => response.json())
 			.then((data) => {
@@ -20,7 +23,26 @@ function App() {
 				setList(list);
 				console.log('list', list);
 			});
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
 	}, []);
+
+	const handleScroll = () => {
+		const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
+		const body = document.body;
+		const html = document.documentElement;
+		const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+		const windowBottom = windowHeight + window.pageYOffset;
+		if (windowBottom >= docHeight) {
+			setIsBottom(true);
+			console.log('isBottom');
+		} else {
+			setIsBottom(false);
+			console.log('notBottom');
+		}
+	};
 	return (
 		<div className='App'>
 			<div className='container'>
