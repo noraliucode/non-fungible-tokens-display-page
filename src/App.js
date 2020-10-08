@@ -25,8 +25,8 @@ function App() {
 		<div className='App'>
 			<div className='container'>
 				{list.map((item, index) => (
-					<div key={`${item.name}_${index}`}>
-						<img className='listImg' src={item.imageUrl} alt={'Item'} />
+					<div className='list-item' key={`${item.name}_${index}`}>
+						<img className='list-img' src={item.imageUrl} alt={'Item'} />
 						<div>{item.name}</div>
 					</div>
 				))}
