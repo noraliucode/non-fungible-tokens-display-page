@@ -10,7 +10,7 @@ function App(props) {
 		<Router>
 			<Switch>
 				<Route exact path='/' component={ItemList} {...props} />
-				<Route exact path='/item' component={Item} />
+				<Route exact path='/item/:address/:tokenId' component={Item} {...props} />
 			</Switch>
 		</Router>
 	);

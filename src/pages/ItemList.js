@@ -45,14 +45,12 @@ const ItemList = (props) => {
 		fetch(`https://api.opensea.io/api/v1/assets?owner=0x960DE9907A2e2f5363646d48D7FB675Cd2892e91&offset=${value}&limit=20`)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
+				console.log('fetchList data', data);
 				const result = data.assets.map((item) => ({
-					imageUrl: item.image_original_url,
+					imageUrl: item.image_url,
 					name: item.name,
-					collectionName: item.collection.name,
-					description: item.description,
-					permalink: item.permalink,
-					id: item.id,
+					tokenId: item.token_id,
+					address: item.asset_contract.address,
 				}));
 				const temp = list.concat(result);
 				setList(temp);
@@ -66,7 +64,7 @@ const ItemList = (props) => {
 				{list.map((item, index) => (
 					<div
 						onClick={() => {
-							history.push({ pathname: '/item' });
+							history.push({ pathname: `/item/${item.address}/${item.tokenId}` });
 						}}
 						className='list-item'
 						key={`${item.name}_${index}`}
