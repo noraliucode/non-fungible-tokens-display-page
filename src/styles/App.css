@@ -63,3 +63,12 @@
 		width: 80%;
 	}
 }
+
+.item {
+	border: 1px solid #4a4a4a;
+}
+
+.item-img {
+	width: 50%;
+	height: auto;
+}
