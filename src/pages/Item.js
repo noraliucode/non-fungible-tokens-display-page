@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/App.css';
+import { Link } from 'react-router-dom';
 
 const Item = (props) => {
 	const [item, setItem] = useState({});
@@ -28,10 +29,15 @@ const Item = (props) => {
 
 	return (
 		<div className={'container'}>
-			<div>{item.name}</div>
-			<img calssName={'item-img'} src={item.imageUrl} />
-			<div>{item.name}</div>
-			<div>{item.description}</div>
+			<div className='item'>
+				<div>{item.name}</div>
+				<img calssName={'item-img'} src={item.imageUrl} />
+				<div>{item.name}</div>
+				<div>{item.description}</div>
+			</div>
+			<a href={item.permalink} target='blank'>
+				<button className='button'>Permaillink</button>
+			</a>
 		</div>
 	);
 };
