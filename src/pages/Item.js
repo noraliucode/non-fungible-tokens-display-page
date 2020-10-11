@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/App.css';
 import { Link } from 'react-router-dom';
+import arrow from '../images/arrow.svg';
 
 const Item = (props) => {
 	const [item, setItem] = useState({});
@@ -30,7 +31,11 @@ const Item = (props) => {
 	return (
 		<div className={'container'}>
 			<div className='item'>
-				<div>{item.name}</div>
+				<Link to='/'>
+					<img src={arrow} className='arrow' alt='arrow' />
+					<div>{item.name}</div>
+				</Link>
+
 				<img calssName={'item-img'} src={item.imageUrl} />
 				<div>{item.name}</div>
 				<div>{item.description}</div>
