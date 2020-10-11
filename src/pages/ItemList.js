@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/App.css';
 import { Link } from 'react-router-dom';
 
-const ItemList = (props) => {
-	console.log(props.history);
-	const { history } = props;
+const ItemList = () => {
 	const [list, setList] = useState([]);
 	const [isBottom, setIsBottom] = useState(false);
 	const [offset, setOffect] = useState(0);
@@ -34,19 +32,15 @@ const ItemList = (props) => {
 		const windowBottom = windowHeight + window.pageYOffset;
 		if (windowBottom >= docHeight - 10) {
 			setIsBottom(true);
-			console.log('isBottom');
 		} else {
 			setIsBottom(false);
-			console.log('notBottom');
 		}
 	};
 
 	const fetchList = (value = 0) => {
-		console.log('fetchList value', value);
 		fetch(`https://api.opensea.io/api/v1/assets?owner=0x960DE9907A2e2f5363646d48D7FB675Cd2892e91&offset=${value}&limit=20`)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log('fetchList data', data);
 				const result = data.assets.map((item) => ({
 					imageUrl: item.image_url,
 					name: item.name,
@@ -55,8 +49,8 @@ const ItemList = (props) => {
 				}));
 				const temp = list.concat(result);
 				setList(temp);
-				console.log('list', list);
-			});
+			})
+			.catch((e) => console.log(e.message));
 	};
 
 	return (

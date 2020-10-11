@@ -15,8 +15,6 @@ const Item = (props) => {
 		fetch(`https://api.opensea.io/api/v1/asset/${address}/${tokenId}`)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log('data!', data);
-
 				const result = {
 					imageUrl: data.image_url,
 					name: data.name,
@@ -25,7 +23,8 @@ const Item = (props) => {
 					permalink: data.permalink,
 				};
 				setItem(result);
-			});
+			})
+			.catch((e) => console.log(e.message));
 	};
 
 	return (
