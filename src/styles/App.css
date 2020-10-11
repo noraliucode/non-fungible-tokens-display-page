@@ -1,5 +1,6 @@
 .App {
 	text-align: center;
+	background-color: #ffd5d5;
 }
 
 .App-logo {
@@ -39,9 +40,11 @@
 
 .list-item {
 	width: 38%;
-	border: 1px solid #282c34;
 	padding: 10px;
 	margin: 20px;
+	background: white;
+	border-radius: 5px;
+	min-height: 408px;
 }
 
 .list-img {
@@ -50,7 +53,7 @@
 }
 
 .container {
-	width: 60%;
+	width: 80%;
 	border: 1px solid #282c34;
 	margin: auto;
 	display: flex;
@@ -82,4 +85,13 @@
 	width: 80%;
 	left: 50%;
 	transform: translateX(-50%);
+}
+
+.title {
+	color: #0030cc;
+	font-family: 'Fugaz One';
+	font-size: 54px;
+	line-height: 79px;
+	text-shadow: -5px 5px #ff5b28;
+	width: 100%;
 }

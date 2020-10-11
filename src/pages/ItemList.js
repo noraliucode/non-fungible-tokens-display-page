@@ -62,6 +62,7 @@ const ItemList = (props) => {
 	return (
 		<div className='App'>
 			<div className='container'>
+				<div className='title'>NFT Collections</div>
 				{list.map((item, index) => (
 					<Link to={`/item/${item.address}/${item.tokenId}`} className='list-item' key={`${item.name}_${index}`}>
 						<img className='list-img' src={item.imageUrl} alt={'Item'} />
