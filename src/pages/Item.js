@@ -31,14 +31,16 @@ const Item = (props) => {
 	return (
 		<div className={'container'}>
 			<div className='item'>
-				<Link to='/'>
-					<img src={arrow} className='arrow' alt='arrow' />
-					<div>{item.name}</div>
-				</Link>
+				<div className='navigate'>
+					<Link to='/'>
+						<img src={arrow} className='arrow' alt='arrow' />
+					</Link>
+					<div className='item-title'>{item.name}</div>
+				</div>
 
-				<img calssName={'item-img'} src={item.imageUrl} />
-				<div>{item.name}</div>
-				<div>{item.description}</div>
+				<img className='item-img' src={item.imageUrl} />
+				<div className='item-name'>{item.name}</div>
+				<div className='description'>{item.description}</div>
 			</div>
 			<a href={item.permalink} target='blank'>
 				<button className='button'>Permaillink</button>

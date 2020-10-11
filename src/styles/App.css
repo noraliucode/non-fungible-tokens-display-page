@@ -1,6 +1,5 @@
 .App {
 	text-align: center;
-	background-color: #ffd5d5;
 }
 
 .App-logo {
@@ -40,21 +39,28 @@
 
 .list-item {
 	width: 38%;
-	padding: 10px;
-	margin: 20px;
+	padding: 30px 10px;
+	margin: 30px;
 	background: white;
 	border-radius: 5px;
 	min-height: 408px;
+	font-size: 25px;
+	font-family: 'Rubik', sans-serif;
+	box-shadow: -8px 16px 16px rgba(0, 0, 0, 0.1);
+	min-width: 250px;
 }
 
 .list-img {
 	width: 80%;
 	height: auto;
+	margin-bottom: 25px;
+	padding: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
 }
 
 .container {
-	width: 80%;
-	border: 1px solid #282c34;
+	width: 60%;
 	margin: auto;
 	display: flex;
 	flex-wrap: wrap;
@@ -63,28 +69,43 @@
 
 @media (max-width: 720px) {
 	.container {
-		width: 80%;
+		width: 90%;
 	}
 }
 
 .item {
-	border: 1px solid #4a4a4a;
 	height: 80%;
 	width: 100%;
+	text-align: center;
+	height: 100vh;
+}
+
+@media (max-width: 720px) {
+	.item {
+		width: 90%;
+	}
 }
 
 .item-img {
-	width: 50%;
+	width: 60%;
 	height: auto;
 }
 
 .button {
 	position: fixed;
-	bottom: 20px;
-	padding: 10px;
-	width: 80%;
+	bottom: 50px;
+	padding: 20px;
+	width: 60%;
 	left: 50%;
 	transform: translateX(-50%);
+	background-color: #0030cc;
+	color: #fff;
+	font-family: 'Rubik';
+	border: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border-radius: 5px;
+	font-size: large;
 }
 
 .title {
@@ -94,4 +115,51 @@
 	line-height: 79px;
 	text-shadow: -5px 5px #ff5b28;
 	width: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #0030cc;
+}
+
+.navigate {
+	width: 100%;
+	text-align: center;
+	height: 50px;
+	position: relative;
+}
+
+.item-title {
+	font-family: 'Fugaz One';
+	color: #0030cc;
+	font-size: 30px;
+}
+
+.arrow {
+	position: absolute;
+	left: 0;
+	width: 30px;
+	height: 30px;
+	top: 8px;
+}
+
+.description {
+	font-family: 'Rubik';
+	background: #fff;
+	width: 80%;
+	margin: auto;
+	text-align: left;
+	padding: 10px;
+	border-radius: 5px;
+	min-height: 200px;
+}
+
+.item-name {
+	font-family: 'Rubik';
+	font-size: 25px;
+	margin: 20px;
 }
