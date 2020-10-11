@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/App.css';
+import { Link } from 'react-router-dom';
 
 const ItemList = (props) => {
 	console.log(props.history);
@@ -62,16 +63,10 @@ const ItemList = (props) => {
 		<div className='App'>
 			<div className='container'>
 				{list.map((item, index) => (
-					<div
-						onClick={() => {
-							history.push({ pathname: `/item/${item.address}/${item.tokenId}` });
-						}}
-						className='list-item'
-						key={`${item.name}_${index}`}
-					>
+					<Link to={`/item/${item.address}/${item.tokenId}`} className='list-item' key={`${item.name}_${index}`}>
 						<img className='list-img' src={item.imageUrl} alt={'Item'} />
 						<div>{item.name}</div>
-					</div>
+					</Link>
 				))}
 			</div>
 		</div>
