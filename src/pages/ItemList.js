@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/App.css';
 import { Link } from 'react-router-dom';
+import getWeb3 from '../ethereum/getWeb3';
 
 const ItemList = () => {
 	const [list, setList] = useState([]);
 	const [isBottom, setIsBottom] = useState(false);
 	const [offset, setOffect] = useState(0);
+	const [accounts, setAccounts] = useState([]);
 
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
+		getAccount();
 		fetchList();
 
 		return () => {
@@ -51,6 +54,22 @@ const ItemList = () => {
 				setList(temp);
 			})
 			.catch((e) => console.log(e.message));
+	};
+
+	const getAccount = async () => {
+		try {
+			// Get network provider and web3 instance.
+			const web3 = await getWeb3();
+
+			// Use web3 to get the user's accounts.
+			const accounts = await web3.eth.getAccounts();
+			console.log('accounts', accounts);
+			setAccounts(accounts);
+		} catch (error) {
+			// Catch any errors for any of the above operations.
+			alert(`Failed to load web3, accounts, or contract. Check console for details.`);
+			console.error(error);
+		}
 	};
 
 	return (
