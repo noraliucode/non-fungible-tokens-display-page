@@ -87,8 +87,10 @@ const ItemList = () => {
 					</Link>
 				))}
 				{list.length <= 1 && (
-					<div className='description-index'>
-						The NFT collections seems less than 1 in account you choose, use other account instead?{' '}
+					<>
+						<div className='description-index'>
+							The NFT collections seems less than 1 in account you choose, use other account instead?{' '}
+						</div>
 						<button
 							className='button-index'
 							onClick={() => {
@@ -97,7 +99,7 @@ const ItemList = () => {
 						>
 							Use other account
 						</button>
-					</div>
+					</>
 				)}
 			</div>
 		</div>
