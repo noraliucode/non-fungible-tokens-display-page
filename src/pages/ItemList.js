@@ -11,8 +11,10 @@ const ItemList = () => {
 
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
-		getAccount();
-		fetchList();
+		const _getAccount = async () => await getAccount();
+		_getAccount().then((result) => {
+			fetchList(0, result);
+		});
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
@@ -22,7 +24,7 @@ const ItemList = () => {
 	useEffect(() => {
 		if (isBottom) {
 			const temp = offset + 20;
-			fetchList(temp);
+			fetchList(temp, accounts);
 			setOffect(temp);
 		}
 	}, [isBottom]);
@@ -40,8 +42,11 @@ const ItemList = () => {
 		}
 	};
 
-	const fetchList = (value = 0) => {
-		fetch(`https://api.opensea.io/api/v1/assets?owner=0x960DE9907A2e2f5363646d48D7FB675Cd2892e91&offset=${value}&limit=20`)
+	const fetchList = (value = 0, _accounts, isCleanList) => {
+		console.log('fetchList list', list);
+		console.log('fetchList accounts', _accounts);
+		const owner = _accounts ? _accounts[0] : '0x960DE9907A2e2f5363646d48D7FB675Cd2892e91';
+		fetch(`https://api.opensea.io/api/v1/assets?owner=${owner}&offset=${value}&limit=20`)
 			.then((response) => response.json())
 			.then((data) => {
 				const result = data.assets.map((item) => ({
@@ -50,7 +55,8 @@ const ItemList = () => {
 					tokenId: item.token_id,
 					address: item.asset_contract.address,
 				}));
-				const temp = list.concat(result);
+				const _list = isCleanList ? [] : list;
+				const temp = _list.concat(result);
 				setList(temp);
 			})
 			.catch((e) => console.log(e.message));
@@ -60,11 +66,11 @@ const ItemList = () => {
 		try {
 			// Get network provider and web3 instance.
 			const web3 = await getWeb3();
-
 			// Use web3 to get the user's accounts.
 			const accounts = await web3.eth.getAccounts();
 			console.log('accounts', accounts);
 			setAccounts(accounts);
+			return accounts;
 		} catch (error) {
 			// Catch any errors for any of the above operations.
 			alert(`Failed to load web3, accounts, or contract. Check console for details.`);
@@ -82,6 +88,18 @@ const ItemList = () => {
 						<div>{item.name}</div>
 					</Link>
 				))}
+				{list.length <= 1 && (
+					<div>
+						The NFT collections seems less than 1 in account you choose, use other account instead?{' '}
+						<button
+							onClick={() => {
+								fetchList(0, null, true);
+							}}
+						>
+							Use other account
+						</button>
+					</div>
+				)}
 			</div>
 		</div>
 	);
