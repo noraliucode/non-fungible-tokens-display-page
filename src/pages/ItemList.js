@@ -43,8 +43,6 @@ const ItemList = () => {
 	};
 
 	const fetchList = (value = 0, _accounts, isCleanList) => {
-		console.log('fetchList list', list);
-		console.log('fetchList accounts', _accounts);
 		const owner = _accounts ? _accounts[0] : '0x960DE9907A2e2f5363646d48D7FB675Cd2892e91';
 		fetch(`https://api.opensea.io/api/v1/assets?owner=${owner}&offset=${value}&limit=20`)
 			.then((response) => response.json())
