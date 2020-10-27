@@ -163,3 +163,28 @@ a:visited {
 	font-size: 25px;
 	margin: 20px;
 }
+
+.button-index {
+	padding: 20px;
+	width: 60%;
+	background-color: #0030cc;
+	color: #fff;
+	font-family: 'Rubik';
+	border: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border-radius: 5px;
+	font-size: large;
+	margin-top: 30px;
+	cursor: pointer;
+}
+
+.description-index {
+	font-family: 'Rubik';
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	padding: 10px;
+	border-radius: 5px;
+	min-height: 200px;
+}

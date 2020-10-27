@@ -87,9 +87,10 @@ const ItemList = () => {
 					</Link>
 				))}
 				{list.length <= 1 && (
-					<div>
+					<div className='description-index'>
 						The NFT collections seems less than 1 in account you choose, use other account instead?{' '}
 						<button
+							className='button-index'
 							onClick={() => {
 								fetchList(0, null, true);
 							}}
