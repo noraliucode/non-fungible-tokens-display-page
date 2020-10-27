@@ -1,4 +1,4 @@
-## A A simple page for displaying non-fungible-tokens collections
+## A simple page for displaying non-fungible-tokens collections
 
 ## Install & Run
 ```
